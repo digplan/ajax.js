@@ -2,6 +2,7 @@ var AJAX = {};
 
 (function (AJAX) {
 
+
   var json2qs = function(o) {
     if (typeof o !== 'object') return o;
     var a = [];
@@ -9,9 +10,8 @@ var AJAX = {};
     return a.join('&');
   }
   
-  AJAX.prototype.method = function(verb, u, d, cb) {
-    if(typeof window === 'undefined')  // node.js
-      var XMLHttpRequest = require('xhr2');
+  AJAX.method = function(verb, u, d, cb) {
+    var XMLHttpRequest = typeof window !== 'undefined' ? window.XMLHttpRequest : require('xhr2');
     var x = new XMLHttpRequest;
     if (verb == 'GET') u = u + '?' + json2qs(d);
     x.open(verb, u, true);
@@ -26,14 +26,16 @@ var AJAX = {};
       try {
         resp = JSON.parse(resp);
       } catch (e) {}
-      (cb || console.log.bind(console))(resp, r.target);
+
+      var err = r.target.status.toString()[0] !== "2";
+      (cb || console.log.bind(console))(err, r.target, resp);
     };
   }
 
-  AJAX.prototype.get = Ajax.prototype.method.bind(this, 'GET');
-  AJAX.prototype.head = Ajax.prototype.method.bind(this, 'HEAD');
-  AJAX.prototype.post = Ajax.prototype.method.bind(this, 'POST');
-  AJAX.prototype.put = Ajax.prototype.method.bind(this, 'PUT');
-  AJAX.prototype.delete = Ajax.prototype.method.bind(this, 'DELETE'); 
+  AJAX.get = AJAX.method.bind(this, 'GET');
+  AJAX.head = AJAX.method.bind(this, 'HEAD');
+  AJAX.post = AJAX.method.bind(this, 'POST');
+  AJAX.put = AJAX.method.bind(this, 'PUT');
+  AJAX.delete = AJAX.method.bind(this, 'DELETE'); 
   
 })(typeof exports !== 'undefined' ? exports : AJAX);
