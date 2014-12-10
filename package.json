@@ -1,0 +1,9 @@
+{
+  "name": "Ajax.js",
+  "description": "Simple Network Requests from Browser and NodeJS",
+  "version": "0.1",
+  "dependencies": {
+    "xhr2": ""
+  },
+  "homepage": "https://github.com/digplan/ajax.js"
+}
