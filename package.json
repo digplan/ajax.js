@@ -1,9 +1,13 @@
 {
-  "name": "Ajax.js",
-  "description": "Simple Network Requests from Browser and NodeJS",
-  "version": "0.1",
-  "dependencies": {
-    "xhr2": ""
+  "name"          : "appcache-node",
+  "description"   : "",
+  "url"           : "http://github.com/digplan/ajax.js",
+  "keywords"      : ["util", "nodejs", "express", "web", "html5"],
+  "author"        : "C Borkert <ILIKECHEESE@dpsw.info>",
+  "main": "ajax.js",
+  "repository": {
+  	"type": "git",
+ 	"url": "git://github.com/digplan/ajax.js.git"
   },
-  "homepage": "https://github.com/digplan/ajax.js"
+  "version"       : "0.0.1"
 }
