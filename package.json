@@ -1,5 +1,5 @@
 {
-  "name"          : "appcache-node",
+  "name"          : "ajax.js",
   "description"   : "",
   "url"           : "http://github.com/digplan/ajax.js",
   "keywords"      : ["util", "nodejs", "express", "web", "html5"],
