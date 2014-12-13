@@ -24,7 +24,7 @@ var AJAX = {};
       if (typeof d === 'object') d = JSON.stringify(d);
     }
 
-    try{
+    try {
       x.send(d);
     } catch(e){
       cb('AJAX.js network error cannot connect');
@@ -34,7 +34,9 @@ var AJAX = {};
       var resp = r.target.responseText;
       try {
         resp = JSON.parse(resp);
-      } catch (e) {}
+      } catch (e) {
+
+      }
       var status = r.target.status;
       (cb || console.log.bind(console))(status.toString()[0] == "2" ? null : status, r.target, resp);
     };
@@ -45,6 +47,18 @@ var AJAX = {};
   AJAX.head = AJAX.method.bind(this, 'HEAD');
   AJAX.post = AJAX.method.bind(this, 'POST');
   AJAX.put = AJAX.method.bind(this, 'PUT');
-  AJAX.delete = AJAX.method.bind(this, 'DELETE'); 
-  
+  AJAX.delete = AJAX.method.bind(this, 'DELETE');
+
+  if(typeof window === 'undefined') return;
+
+  AJAX.load = function(src, cb){
+    var css = s.match(/css$/);
+    var i = document.body.appendChild(document.createElement(css ? 'link' : 'script'));
+    i.onload = cb;
+    if (css)
+      css.rel = "stylesheet";
+    i[css ? 'href' : 'src'] = src;
+    css && cb && cb();
+  }
+
 })(typeof exports !== 'undefined' ? exports : AJAX);
