@@ -1,13 +1,16 @@
 {
-  "name"          : "ajax.js",
-  "description"   : "",
-  "url"           : "http://github.com/digplan/ajax.js",
-  "keywords"      : ["util", "nodejs", "express", "web", "html5"],
-  "author"        : "C Borkert <ILIKECHEESE@dpsw.info>",
-  "main": "ajax.js",
-  "repository": {
-  	"type": "git",
- 	"url": "git://github.com/digplan/ajax.js.git"
+  "name"        : "ajax.js",
+  "description" : "",
+  "url"         : "http://github.com/digplan/ajax.js",
+  "keywords"    : ["util", "nodejs", "express", "web", "html5"],
+  "author"      : "C Borkert <ILIKECHEESE@dpsw.info>",
+  "main"        : "ajax.js",
+  "dependencies": {
+     "xhr2"     : ""
   },
-  "version"       : "0.0.4"
+  "repository": {
+  	 "type"     : "git",
+ 	   "url"      : "git://github.com/digplan/ajax.js.git"
+  },
+  "version"     : "0.0.4"
 }
