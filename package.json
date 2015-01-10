@@ -6,11 +6,12 @@
   "author"      : "C Borkert <ILIKECHEESE@dpsw.info>",
   "main"        : "ajax.js",
   "dependencies": {
-     "xhr2"     : ""
+     "xhr2"     : "",
+     "eventsource": ""
   },
   "repository": {
   	 "type"     : "git",
  	   "url"      : "git://github.com/digplan/ajax.js.git"
   },
-  "version"     : "0.0.4"
+  "version"     : "0.0.5"
 }
