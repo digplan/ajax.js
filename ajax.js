@@ -19,8 +19,6 @@ var AJAX = {};
     if(headers)
       for(k in headers) x.setRequestHeader(k, headers[k]);
 
-    console.log('ajax.body', verb, d)
-
     x.send(d);
     x.onload = function(r) {
       var resp = r.target.responseText;
