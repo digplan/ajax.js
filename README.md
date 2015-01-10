@@ -25,4 +25,4 @@ setTimeout(function(){
 ````
 
 Data is stringified and sent as is (not form encoded), if not a JS object, sends as form-encoded    
-Callback contains response object and 
+Callback contains response object and status code.
