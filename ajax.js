@@ -27,9 +27,7 @@ var AJAX = {};
       try {
         resp = JSON.parse(resp);
       } catch (e) {}
-
-      var err = r.target.status.toString()[0] !== "2";
-      (cb || console.log.bind(console))(resp);
+      (cb || console.log.bind(console))(resp, x.status);
     };
 
   }
