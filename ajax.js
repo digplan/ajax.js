@@ -25,7 +25,7 @@ var AJAX = {};
       try {
         resp = JSON.parse(resp);
       } catch (e) {}
-      (cb || console.log.bind(console))(resp, x.status, x.getResponseHeaders());
+      (cb || console.log.bind(console))(resp, x.status, x.getAllResponseHeaders().split(/\r?\n/));
     };
 
   }
