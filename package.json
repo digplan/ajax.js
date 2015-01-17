@@ -13,5 +13,5 @@
   	 "type"     : "git",
  	   "url"      : "git://github.com/digplan/ajax.js.git"
   },
-  "version"     : "0.0.7"
+  "version"     : "0.0.8"
 }
