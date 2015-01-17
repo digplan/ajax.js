@@ -2,7 +2,7 @@ var AJAX = {};
 
 (function (AJAX) {
 
-  if(exports && !this.EventSource)
+  if(this.exports && !this.EventSource)
     EventSource = require('eventsource');
 
   AJAX.method = function(verb, u, d, cb, headers) {
@@ -25,7 +25,7 @@ var AJAX = {};
       try {
         resp = JSON.parse(resp);
       } catch (e) {}
-      (cb || console.log.bind(console))(resp, x.status);
+      (cb || console.log.bind(console))(resp, x.status, x.getResponseHeaders());
     };
 
   }
