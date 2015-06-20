@@ -46,7 +46,7 @@ var AJAX = {};
   };
   AJAX.apis = function(s){
     var api = {};
-    apidefs.split('\n').forEach(function(c){
+    s.split('\n').forEach(function(c){
       var arr = c.split(' ');
       var name = arr.shift().split('.')
       api[name[0]] = api[name[0]] || {};
@@ -54,6 +54,15 @@ var AJAX = {};
       api[name[0]][name[1]].def = arr.join(' ');
       api[name[0]][name[1]].params = arr.join(' ').match(/{{.*}}/g);
     });
-    return api;
+    return function(svc, name, data, cb){
+      var def = api[svc][name].def.split(' ');
+      AJAX[def[0]](def[1], def[3], cb, JSON.parse(def[2]));
+    }
   };
+/*
+  AJAX.get('https://gist.githubusercontent.com/digplan/73155e11484384b14110/raw',null, function(s){
+    var callapi = AJAX.apis(s);
+    callapi('httpbin', 'tryget', '', console.log.bind(console))
+  })
+*/
 })(typeof exports !== 'undefined' ? exports : AJAX);
