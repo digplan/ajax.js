@@ -19,6 +19,7 @@ var AJAX = {};
     if(headers)
       for(k in headers) x.setRequestHeader(k, headers[k]);
 
+    if(verb == 'GET') d = null;
     x.send(d);
     x.onload = function(r) {
       var resp = r.target.responseText;
