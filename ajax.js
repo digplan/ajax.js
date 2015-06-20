@@ -56,10 +56,11 @@ var AJAX = {};
       api[name[0]][name[1]].params = arr.join(' ').match(/{{.*}}/g);
     });
     return function(svc, name, data, cb){
-      var def = api[svc][name].def.split(' ');
+      var def = api[svc][name].def;
       if(data){
         for(i in data) def = def.replace('{{'+i+'}}', data[i]);
       }
+      def = def.split(' ');
       AJAX[def[0]](def[1], def[3], cb, JSON.parse(def[2]));
     }
   };
