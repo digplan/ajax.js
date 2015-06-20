@@ -57,6 +57,9 @@ var AJAX = {};
     });
     return function(svc, name, data, cb){
       var def = api[svc][name].def.split(' ');
+      if(data){
+        for(i in data) def = def.replace('{{'+i+'}}', data[i]);
+      }
       AJAX[def[0]](def[1], def[3], cb, JSON.parse(def[2]));
     }
   };
