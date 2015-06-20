@@ -43,5 +43,17 @@ var AJAX = {};
     return {
       close: e.close
     }
-  }
+  };
+  AJAX.apis = function(s){
+    var api = {};
+    apidefs.split('\n').forEach(function(c){
+      var arr = c.split(' ');
+      var name = arr.shift().split('.')
+      api[name[0]] = api[name[0]] || {};
+      api[name[0]][name[1]] = {};
+      api[name[0]][name[1]].def = arr.join(' ');
+      api[name[0]][name[1]].params = arr.join(' ').match(/{{.*}}/g);
+    });
+    return api;
+  };
 })(typeof exports !== 'undefined' ? exports : AJAX);
