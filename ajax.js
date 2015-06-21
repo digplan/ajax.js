@@ -17,7 +17,7 @@ var AJAX = {};
       x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     if(headers)
-      for(k in headers) x.setRequestHeader(k, headers[k]);
+      for(var k in headers) x.setRequestHeader(k, headers[k]);
 
     if(verb == 'GET') d = null;
     x.send(d);
