@@ -20,11 +20,11 @@ AJAX.delete(url, data, callback, headers);
 AJAX.method(VERB, url, data, callback, headers);
 
 // sse events
-var events = AJAX.events('http://http-echo.com/stream');
+var events = AJAX.events('http://http-echo.com/stream', function(e) { console.log(e) });
 setTimeout(function(){
 	console.log('stopping');
 	events.close();
-}, 15000);
+}, 15000)
 
 // get web page and query DOM (Browser only, not available for NodeJS)
 AJAX.query(url, css_selector, callback)
