@@ -3,16 +3,14 @@
   "version": "2015.06.28",
   "manifest_version": 2,
   "description": "",
-  "homepage_url": "",
+  "homepage_url": "https://github.com/digplan/ajax.js",
   "icons": {},
   "permissions": [
     "activeTab"
   ],
   "content_scripts": [{
-    "matches": [
-    "http://dpsw.info/*",
-    "http://localhost/*"
-    ]
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["ajax.js"]
   }],
   "web_accessible_resources": ["ajax.js"]
 }
