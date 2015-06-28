@@ -10,7 +10,7 @@
   ],
   "content_scripts": [{
     "matches": ["http://*/*", "https://*/*"],
-    "js": ["ajax.js"]
+    "js": ["chrome_loader.js"]
   }],
   "web_accessible_resources": ["ajax.js"]
 }
