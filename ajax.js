@@ -2,7 +2,7 @@ var AJAX = {};
 
 (function (AJAX) {
 
-  if(this.exports && !this.EventSource)
+  if(!this.exports && !this.EventSource)
     EventSource = require('eventsource');
 
   AJAX.method = function(verb, u, d, cb, headers) {
@@ -64,6 +64,14 @@ var AJAX = {};
       AJAX[def[0]](def[1], def[3], cb, JSON.parse(def[2]));
     }
   };
+  AJAX.query = function(url, selector, cb){
+    this.get(url, null, function(s){
+      if(typeof window !== 'undefined' && DOMParser)
+        return cb(new DOMParser().parseFromString(s, 'text/html').querySelectorAll(selector));
+      else
+        cb('AJAX.query is not supported on nodejs or browsers without DOMParser');
+    });
+  }
 /*
   AJAX.get('https://gist.githubusercontent.com/digplan/73155e11484384b14110/raw',null, function(s){
     var callapi = AJAX.apis(s);
