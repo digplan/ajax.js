@@ -18,7 +18,6 @@ AJAX.post(url, data, callback, headers);
 AJAX.put(url, data, callback, headers);
 AJAX.delete(url, data, callback, headers);
 AJAX.method(VERB, url, data, callback, headers);
-AJAX.events(url, callback);
 
 // sse events
 var events = AJAX.events('http://http-echo.com/stream');
