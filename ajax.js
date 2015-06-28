@@ -1,4 +1,5 @@
 var AJAX = {};
+AJAX.version = '2015.06.28';
 
 (function (AJAX) {
 
