@@ -1,5 +1,5 @@
 var AJAX = {};
-AJAX.version = '2015.06.28';
+AJAX.version = '2015.07.01';
 
 (function (AJAX) {
 
@@ -47,16 +47,18 @@ AJAX.version = '2015.06.28';
     }
   };
   AJAX.apis = function(s){
-    var api = {};
+    var api = {}, names = [];
     s.split('\n').forEach(function(c){
       var arr = c.split(' ');
-      var name = arr.shift().split('.')
+      var name = arr.shift();
+      names.push(name);
+      name = name.split('.');
       api[name[0]] = api[name[0]] || {};
       api[name[0]][name[1]] = {};
       api[name[0]][name[1]].def = arr.join(' ');
       api[name[0]][name[1]].params = arr.join(' ').match(/{{.*}}/g);
     });
-    return function(svc, name, data, cb){
+    var f = function(svc, name, data, cb){
       var def = api[svc][name].def;
       if(data){
         for(i in data) def = def.replace('{{'+i+'}}', data[i]);
@@ -64,6 +66,8 @@ AJAX.version = '2015.06.28';
       def = def.split(' ');
       AJAX[def[0]](def[1], def[3], cb, JSON.parse(def[2]));
     }
+    f.list = names;
+    return f;
   };
   AJAX.query = function(url, selector, cb){
     this.get(url, null, function(s){
