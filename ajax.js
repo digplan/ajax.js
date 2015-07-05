@@ -37,6 +37,7 @@ AJAX.version = '2015.07.05';
   AJAX.post = AJAX.method.bind(this, 'POST');
   AJAX.put = AJAX.method.bind(this, 'PUT');
   AJAX.delete = AJAX.method.bind(this, 'DELETE'); 
+  AJAX.patch = AJAX.method.bind(this, 'PATCH'); 
   AJAX.events = function(endpoint, cb){
     var e = new EventSource(endpoint);
     e.onmessage = function(ev){
