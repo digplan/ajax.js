@@ -1,5 +1,5 @@
 var AJAX = {};
-AJAX.version = '2015.07.01';
+AJAX.version = '2015.07.05';
 
 (function (AJAX) {
 
@@ -46,29 +46,6 @@ AJAX.version = '2015.07.01';
       close: e.close
     }
   };
-  AJAX.apis = function(s){
-    var api = {}, names = [];
-    s.split('\n').forEach(function(c){
-      var arr = c.split(' ');
-      var name = arr.shift();
-      names.push(name);
-      name = name.split('.');
-      api[name[0]] = api[name[0]] || {};
-      api[name[0]][name[1]] = {};
-      api[name[0]][name[1]].def = arr.join(' ');
-      api[name[0]][name[1]].params = arr.join(' ').match(/{{.*}}/g);
-    });
-    var f = function(svc, name, data, cb){
-      var def = api[svc][name].def;
-      if(data){
-        for(i in data) def = def.replace('{{'+i+'}}', data[i]);
-      }
-      def = def.split(' ');
-      AJAX[def[0]](def[1], def[3], cb, JSON.parse(def[2]));
-    }
-    f.list = names;
-    return f;
-  };
   AJAX.query = function(url, selector, cb){
     this.get(url, null, function(s){
       if(typeof window !== 'undefined' && DOMParser)
@@ -77,10 +54,4 @@ AJAX.version = '2015.07.01';
         cb('AJAX.query is not supported on nodejs or browsers without DOMParser');
     });
   }
-/*
-  AJAX.get('https://gist.githubusercontent.com/digplan/73155e11484384b14110/raw',null, function(s){
-    var callapi = AJAX.apis(s);
-    callapi('httpbin', 'tryget', '', console.log.bind(console))
-  })
-*/
 })(typeof exports !== 'undefined' ? exports : AJAX);
