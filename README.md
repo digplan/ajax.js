@@ -17,6 +17,7 @@ AJAX.head(url, data, callback, headers);
 AJAX.post(url, data, callback, headers);
 AJAX.put(url, data, callback, headers);
 AJAX.delete(url, data, callback, headers);
+AJAX.patch(url, data, callback, headers);
 AJAX.method(VERB, url, data, callback, headers);
 
 // sse events
