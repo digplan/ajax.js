@@ -29,9 +29,4 @@ setTimeout(function(){
 // get web page and query DOM (Browser only, not available for NodeJS)
 AJAX.query(url, css_selector, callback)
 
-// call APIs based on the simple API format
-AJAX.get('https://gist.githubusercontent.com/digplan/73155e11484384b14110/raw', null, function(s){
-  var callapi = AJAX.apis(s);
-  callapi('httpbin', 'tryget', '', console.log.bind(console))
-})
 ````
