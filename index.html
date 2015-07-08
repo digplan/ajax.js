@@ -7,40 +7,18 @@
   Simple self-contained HTTP client for Node and Browser
   <br>
   <table width='100%'>
-    <td>
-      <code>
-// Data is stringified and sent as is (not form encoded), if not a JS object, sends as form-encoded    
-// Callback contains response object and status code.
-
-AJAX.get(url, null, callback, headers);
-AJAX.head(url, data, callback, headers);
-AJAX.post(url, data, callback, headers);
-AJAX.put(url, data, callback, headers);
-AJAX.delete(url, data, callback, headers);
-AJAX.patch(url, data, callback, headers);
-AJAX.method(VERB, url, data, callback, headers);
-
-// sse events
-var events = AJAX.events('http://http-echo.com/stream', function(e) { console.log(e) });
-setTimeout(function(){
-    console.log('stopping');
-    events.close();
-}, 15000)
-
-// get web page and query DOM (Browser only, not available for NodeJS)
-AJAX.query(url, css_selector, function(a, nodes){
-  console.log(url)
-})
-
-// use proxy for sites that don't use CORS
-// a proxy server should fetch requests on clients behalf
-// and echo the response in this format 'https://myproxyserver/https://google.com'
-AJAX.proxy = 'https://myproxyserver';
-</code></td>
-    <td>
-      <code>
-      
-      </code></td>
+    <tr>
+    <td><code>
+      <script src='ajax.js'></script>
+    </code></td>
+    <td><code>
+      $ npm i digplan/ajax.js
+      var AJAX = require('ajax.js')
+    </code></td>
+    </tr>
+    <tr>
+      <script src="https://gist.github.com/digplan/5d803f3d94e25ea71e86.js"></script>
+    </tr>
   </table>
   <br><br>
   Load as a Chrome Extension, for usage in the console..
