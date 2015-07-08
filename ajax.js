@@ -1,5 +1,5 @@
 var AJAX = {};
-AJAX.version = '2015.07.05';
+AJAX.version = '2015.07.08';
 
 (function (AJAX) {
 
@@ -9,6 +9,8 @@ AJAX.version = '2015.07.05';
   AJAX.method = function(verb, u, d, cb, headers) {
     var XMLHttpRequest = typeof window !== 'undefined' ? window.XMLHttpRequest : require('xhr2');
     var x = new XMLHttpRequest;
+    
+    if(AJAX.proxy) u = AJAX.proxy + '/' + u;
     x.open(verb, u, true);
 
     if (typeof d === 'object') 
@@ -48,11 +50,16 @@ AJAX.version = '2015.07.05';
     }
   };
   AJAX.query = function(url, selector, cb){
+    cb = cb || console.log.bind(console);
     this.get(url, null, function(s){
-      if(typeof window !== 'undefined' && DOMParser)
-        return cb(new DOMParser().parseFromString(s, 'text/html').querySelectorAll(selector));
-      else
+      if(typeof window !== 'undefined' && DOMParser){
+        var es = new DOMParser().parseFromString(s, 'text/html').querySelectorAll(selector);
+        var a = [].slice.call(es).map(function(n){ return n.innerText });
+        return cb(a, es);
+      } else {
         cb('AJAX.query is not supported on nodejs or browsers without DOMParser');
+      }
     });
-  }
+  };
+  AJAX.proxy = ''
 })(typeof exports !== 'undefined' ? exports : AJAX);
