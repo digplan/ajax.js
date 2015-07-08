@@ -34,7 +34,7 @@ setTimeout(function(){
  
 // get web page and query DOM (Browser only, not available for NodeJS)
 AJAX.query(url, css_selector, function(a, nodes){
-  // array of innerHTML of nodes, nodelist
+  // array of innerText of nodes, nodelist
   console.log(a, nodes);
 })
  
