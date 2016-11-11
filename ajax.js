@@ -1,5 +1,5 @@
 var AJAX = {};
-AJAX.version = '2015.07.08';
+AJAX.version = '2015.08.01';
 
 (function (AJAX) {
 
@@ -49,6 +49,7 @@ AJAX.version = '2015.07.08';
       close: e.close
     }
   };
+
   AJAX.query = function(url, selector, cb){
     cb = cb || console.log.bind(console);
     this.get(url, null, function(s){
@@ -61,5 +62,5 @@ AJAX.version = '2015.07.08';
       }
     });
   };
-  AJAX.proxy = ''
+  AJAX.proxy = '';
 })(typeof exports !== 'undefined' ? exports : AJAX);
