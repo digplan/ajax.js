@@ -3,7 +3,7 @@
   "description" : "",
   "url"         : "http://github.com/digplan/ajax.js",
   "keywords"    : ["util", "nodejs", "express", "web", "html5"],
-  "author"      : "C Borkert <ILIKECHEESE@dpsw.info>",
+  "author"      : "C Borkert <drivetrafficnow@gmail.com>",
   "main"        : "ajax.js",
   "dependencies": {
      "xhr2"     : "",
@@ -13,5 +13,5 @@
   	 "type"     : "git",
  	   "url"      : "git://github.com/digplan/ajax.js.git"
   },
-  "version"     : "2015.07.08"
+  "version"     : "2.0.0"
 }

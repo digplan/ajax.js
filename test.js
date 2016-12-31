@@ -1,24 +1,17 @@
-var AJAX = require('./ajax.js');
-var baseURI = 'http://http-echo.com';
+var AJAX = require('.');
 
-AJAX.get(baseURI, {}, function(e, r, b){
-  console.log(e, r, b);
+// Promise
+AJAX.get('https://httpbin.org/get?a=1').then(console.log);
+
+// Callback
+AJAX.get('https://httpbin.org/get?a=1', null, (o)=>{
+  console.log('lets try a callback..', o);
 });
 
-/*
-AJAX.head(baseURI, {}, function(e, r, b){
-  console.log(r._headers);
+AJAX.post('https://httpbin.org/post', {data: {b: 2}}, (o)=>{
+  console.log('lets try a POST..', o);
 });
 
-AJAX.post(baseURI, {}, function(r, x){
-  console.log(r);
+AJAX.post('https://httpbin.org/post', {data: {c: 3}, headers: {myMeta: 'data'}}, (o)=>{
+  console.log('lets try a header..', o);
 });
-
-AJAX.put(baseURI, {}, function(r, x){
-  console.log(r);
-});
-
-AJAX.delete(baseURI, {}, function(r, x){
-  console.log(r);
-});
-*/
