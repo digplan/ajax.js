@@ -1,4 +1,8 @@
-var AJAX = require('.');
+try {
+  var AJAX = require('.');
+} catch(e){
+  var AJAX = require('ajax.js');
+}
 
 // Promise
 AJAX.get('https://httpbin.org/get?a=1').then(console.log);

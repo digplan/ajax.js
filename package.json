@@ -13,5 +13,6 @@
   	 "type"     : "git",
  	   "url"      : "git://github.com/digplan/ajax.js.git"
   },
+  "runkitExampleFilename" : "test.js",
   "version"     : "2.0.0"
 }
