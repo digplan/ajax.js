@@ -1,7 +1,7 @@
 var AJAX = {};
 
 (function (AJAX) {
-
+ 
   if(this.exports && !this.EventSource)
     EventSource = require('eventsource');
 
